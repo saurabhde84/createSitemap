@@ -26,7 +26,7 @@ NSMAP = {None : XHTML_NAMESPACE} # the default namespace (no prefix)
 
 root = etree.Element(XHTML + "urlset", nsmap=NSMAP)
 
-# Add a site to the sitemap: call add_site with 3 parameters (url to add, priority from 0-1, frequency of page update) 
+# Add a site to the sitemap. The function takes 3 parameters (url to add, priority from 0-1, frequency of page update) 
 def add_site(url, priority, freq):
 
     curr_url = etree.Element('url')
@@ -52,6 +52,7 @@ def add_site(url, priority, freq):
 
     prio = etree.Element('priority')
     prio.text = priority
+
     curr_url.append(loc)
     curr_url.append(freq)
     curr_url.append(last)
@@ -59,8 +60,10 @@ def add_site(url, priority, freq):
     root.append(curr_url)
 
 
-# Usage: add_site(url, priority from 0-1, frequency of page update)
+# Add some urls to the sitemap via: add_site(url, priority from 0-1, frequency of page update)
 add_site("http://example.com/", "1.0", "daily")
+add_site("http://example.com/parameter", "0.8", "weekly")
+add_site("http://example.com/parameter/cats", "0.7", "hourly")
 
 s = etree.tostring(root, pretty_print=True)
 
