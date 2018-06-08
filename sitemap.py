@@ -18,6 +18,8 @@ from lxml import etree
 import pytz
 from datetime import datetime
 import random
+import json
+import json
 
 XHTML_NAMESPACE = "http://www.sitemaps.org/schemas/sitemap/0.9"
 XHTML = "{%s}" % XHTML_NAMESPACE
